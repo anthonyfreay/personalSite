@@ -11,9 +11,7 @@ const categories = [
     { path: '/people', image: "covers/people_cover.jpg", label: 'People' },
     { path: '/places', image: "places/A7406615-scapes.webp", label: 'Places' },
     { path: '/cars', image: "covers/cars_cover.jpg", label: 'Cars' },
-    { path: '/events', image: "covers/events_cover.jpg", label: 'Events' }
-    // { path: '/posters', image: "covers/poster_cover.jpg", label: 'Posters' },
-    // { path: '/apparel', image: "covers/apparel_cover.jpg", label: 'Apparel' }
+    { path: '/events', image: "events/A7404835-color-hd.webp", label: 'Events' }
 ];
 
 const CategoryLink = ({ path, image, label }) => (
