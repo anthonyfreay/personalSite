@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import './App.css';
 
@@ -18,11 +18,33 @@ const Places = lazy(() => import('./Components/Pages/Places/Places'));
 const Cars = lazy(() => import('./Components/Pages/Cars/Cars'));
 const Events = lazy(() => import('./Components/Pages/Events/Events'));
 
+// Component to remove trailing slashes
+function RemoveTrailingSlash({ ...rest }) {
+  const location = useLocation();
+
+  // If the path has a trailing slash (and it's not just '/'), redirect without it
+  if (location.pathname !== '/' && location.pathname.endsWith('/')) {
+    return (
+      <Navigate
+        replace
+        {...rest}
+        to={{
+          pathname: location.pathname.slice(0, -1),
+          search: location.search,
+        }}
+      />
+    );
+  }
+
+  return rest.children;
+}
+
 function App() {
   return (
     <HelmetProvider>
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
+        <RemoveTrailingSlash>
+          <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/contact' element={<Contact />} />
@@ -38,7 +60,8 @@ function App() {
             <Route path='/cars' element={<Cars />} />
             <Route path='/events' element={<Events />} />
           </Routes>
-        </Suspense>
+          </Suspense>
+        </RemoveTrailingSlash>
       </Router>
     </HelmetProvider>
   );
