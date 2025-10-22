@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico">
+  <meta name="theme-color" content="#F5F5F5" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Anthony Freay | Software Engineer, Photographer, Designer" />
+  <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <title>Anthony Freay</title>
+
+  <script>
+    // Handle SPA routing for direct URL access (e.g., from 404.html redirect)
+    (function () {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== location.pathname) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/index.jsx"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      if (window.location.pathname === '/') {
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', '#090909');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
