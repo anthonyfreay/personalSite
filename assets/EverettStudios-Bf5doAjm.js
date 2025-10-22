@@ -1,1 +1,0 @@
-import{j as t}from"./index-Bqx2JRNI.js";import{N as r}from"./Navbar-AwDZjQ1Z.js";import"./Navbar.module-D3U9Z8KQ.js";const i=()=>t.jsxs("div",{children:[t.jsx(r,{}),t.jsx("h1",{children:"EverettStudios PAGE"})]});export{i as default};
