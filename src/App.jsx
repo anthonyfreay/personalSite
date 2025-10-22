@@ -1,7 +1,11 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
+import Loading from './Components/Util/Loading/Loading';
+import ErrorBoundary from './Components/Util/ErrorBoundary/ErrorBoundary';
+import Analytics from './Components/Util/Analytics';
 
 /// Lazy-loaded components
 const Home = lazy(() => import('./Components/Pages/Home/Home'));
@@ -17,6 +21,7 @@ const People = lazy(() => import('./Components/Pages/People/People'));
 const Places = lazy(() => import('./Components/Pages/Places/Places'));
 const Cars = lazy(() => import('./Components/Pages/Cars/Cars'));
 const Events = lazy(() => import('./Components/Pages/Events/Events'));
+const NotFound = lazy(() => import('./Components/Pages/NotFound/NotFound'));
 
 // Component to remove trailing slashes
 function RemoveTrailingSlash({ ...rest }) {
@@ -39,27 +44,68 @@ function RemoveTrailingSlash({ ...rest }) {
   return rest.children;
 }
 
+// Handle GitHub Pages deep links: redirect from stored path set in public/404.html
+function RedirectHandler() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const redirectPath = sessionStorage.redirect || sessionStorage.getItem('redirect');
+    if (redirectPath) {
+      try { sessionStorage.removeItem('redirect'); } catch (e) { /* noop */ }
+      try { delete sessionStorage.redirect; } catch (e) { /* noop */ }
+      navigate(redirectPath, { replace: true });
+    }
+  }, [navigate]);
+  return null;
+}
+
+function Page({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path='/' element={<Page><Home /></Page>} />
+        <Route path='/contact' element={<Page><Contact /></Page>} />
+        <Route path='/work' element={<Page><Work /></Page>} />
+        <Route path='/live' element={<Page><Live /></Page>} />
+        <Route path='/apparel' element={<Page><Apparel /></Page>} />
+        <Route path='/bw' element={<Page><BlackWhite /></Page>} />
+        <Route path='/everettstudios' element={<Page><EverettStudios /></Page>} />
+        <Route path='/posters' element={<Page><Posters /></Page>} />
+        <Route path='/resume' element={<Page><Resume /></Page>} />
+        <Route path='/people' element={<Page><People /></Page>} />
+        <Route path='/places' element={<Page><Places /></Page>} />
+        <Route path='/cars' element={<Page><Cars /></Page>} />
+        <Route path='/events' element={<Page><Events /></Page>} />
+        <Route path='*' element={<Page><NotFound /></Page>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <HelmetProvider>
       <Router>
         <RemoveTrailingSlash>
-          <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/work' element={<Work />} />
-            <Route path='/live' element={<Live />} />
-            <Route path='/apparel' element={<Apparel />} />
-            <Route path='/bw' element={<BlackWhite />} />
-            <Route path='/everettstudios' element={<EverettStudios />} />
-            <Route path='/posters' element={<Posters />} />
-            <Route path='/resume' element={<Resume />} />
-            <Route path='/people' element={<People />} />
-            <Route path='/places' element={<Places />} />
-            <Route path='/cars' element={<Cars />} />
-            <Route path='/events' element={<Events />} />
-          </Routes>
+          <Suspense fallback={<Loading />}>
+            <RedirectHandler />
+            <Analytics />
+            <ErrorBoundary>
+              <AnimatedRoutes />
+            </ErrorBoundary>
           </Suspense>
         </RemoveTrailingSlash>
       </Router>
