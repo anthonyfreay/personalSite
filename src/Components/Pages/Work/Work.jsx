@@ -29,17 +29,17 @@ const Work = () => {
         <div className={WorkStyle.container}>
             <Helmet>
                 <title>Work | Anthony Freay</title>
-                <meta name="description" content="A collection of photography work by Anthony Freay, showcasing portraits, concerts, and NYC events." />
+                <meta name="description" content="A collection of photography work by Anthony Freay, showcasing portraits, concerts, and events." />
                 <link rel="canonical" href="https://anthonyfreay.com/work" />
 
                 <meta property="og:title" content="Work | Anthony Freay" />
-                <meta property="og:description" content="A collection of photography work by Anthony Freay, showcasing portraits, concerts, and NYC events." />
-                <meta property="og:image" content="https://anthonyfreay.com/covers/people_cover.jpg" />
+                <meta property="og:description" content="A collection of photography work by Anthony Freay, showcasing portraits, concerts, and events." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/live_cover.jpg" />
                 <meta property="og:url" content="https://anthonyfreay.com/work" />
 
                 <meta name="twitter:title" content="Work | Anthony Freay" />
-                <meta name="twitter:description" content="A collection of photography work by Anthony Freay, showcasing portraits, concerts, and NYC events." />
-                <meta name="twitter:image" content="https://anthonyfreay.com/covers/people_cover.jpg" />
+                <meta name="twitter:description" content="A collection of photography work by Anthony Freay, showcasing portraits, concerts, and events." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/live_cover.jpg" />
             </Helmet>
             <PageHeader title="Work | Anthony Freay" />
             <Navbar className={WorkStyle.navBar} activePage="work" />
