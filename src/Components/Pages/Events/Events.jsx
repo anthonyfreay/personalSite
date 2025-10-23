@@ -15,11 +15,9 @@ const Events = () => {
         const horizontal = [
             { "alt": "", "src": "events/A7401031-color.webp" },
             { "alt": "", "src": "events/A7207716-color.webp" },
-            { "alt": "", "src": "events/A7400993-color.webp" },
             { "alt": "", "src": "events/A7400919-color.webp" },
             { "alt": "", "src": "events/A7206906-color.webp" },
             { "alt": "", "src": "events/A7400937-color.webp" },
-            { "alt": "", "src": "events/A7207983-color.webp" },
             { "alt": "", "src": "events/A7402659-color.webp" },
             { "alt": "", "src": "events/A7207820-color.webp" },
             { "alt": "", "src": "events/A7208176-color.webp" },
@@ -39,8 +37,6 @@ const Events = () => {
             { "alt": "", "src": "events/A7400963-color.webp" },
             { "alt": "", "src": "events/A7206546-color.webp" },
             { "alt": "", "src": "events/A7207942-color.webp" },
-            // { "alt": "", "src": "events/A7400918-color.webp" },
-            // { "alt": "", "src": "events/A7400916-color.webp" },
         ].map(image => ({
             ...image,
             hdSrc: image.src.replace(/(\.\w+)$/, '-hd$1')
@@ -53,7 +49,6 @@ const Events = () => {
             { "alt": "", "src": "events/A7401037-color.webp" },
             { "alt": "", "src": "events/A7404555-color.webp" },
             { "alt": "", "src": "events/A7404514-color.webp" },
-            // { "alt": "", "src": "events/A7404469-color.webp" },
             { "alt": "", "src": "events/A7404632-color.webp" },
             { "alt": "", "src": "events/A7407621-color.webp" },
             { "alt": "", "src": "events/A7207607-color.webp" },
@@ -71,7 +66,6 @@ const Events = () => {
             { "alt": "", "src": "events/A7404717-color.webp" },
             { "alt": "All The Way Down", "src": "events/A7207740-color.webp" },
             { "alt": "", "src": "events/A7405071-color.webp" },
-            { "alt": "Cita", "src": "events/A7206564-color.webp" },
             { "alt": "", "src": "events/A7206542-color.webp" },
             { "alt": "", "src": "events/A7207884-color.webp" },
             { "alt": "", "src": "events/A7402743-color.webp" },
@@ -82,7 +76,6 @@ const Events = () => {
             { "alt": "", "src": "events/A7206604-Enhanced-NR-color.webp" },
             { "alt": "", "src": "events/A7405960-color.webp" },
             { "alt": "", "src": "events/A7405730-Enhanced-NR-color.webp" },
-            { "alt": "", "src": "events/A7402541-color.webp" },
         ].map(image => ({
             ...image,
             hdSrc: image.src.replace(/(\.\w+)$/, '-hd$1')
