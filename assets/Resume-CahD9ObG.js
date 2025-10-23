@@ -1,0 +1,1 @@
+import{j as r}from"./index-Bo06q_PG.js";import{N as s}from"./Navbar-BPQQBUEQ.js";import"./Navbar.module-BtSip8oC.js";const o=()=>r.jsxs("div",{children:[r.jsx(s,{}),r.jsx("h1",{children:"Resume LANDING PAGE"})]});export{o as default};
