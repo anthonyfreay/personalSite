@@ -24,10 +24,11 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build",
+    "build": "npm run generate-sitemap && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "browserslist": {
     "production": [
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",
     "gh-pages": "^6.1.1",
+    "sitemap": "^8.0.1",
     "vite": "^7.1.11"
   },
   "homepage": "https://anthonyfreay.com"

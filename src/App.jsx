@@ -14,8 +14,6 @@ const Work = lazy(() => import('./Components/Pages/Work/Work'));
 const Live = lazy(() => import('./Components/Pages/Live/Live'));
 const Apparel = lazy(() => import('./Components/Pages/Apparel/Apparel'));
 const BlackWhite = lazy(() => import('./Components/Pages/BlackWhite/BlackWhite'));
-const EverettStudios = lazy(() => import('./Components/Pages/EverettStudios/EverettStudios'));
-const Posters = lazy(() => import('./Components/Pages/Posters/Posters'));
 const Resume = lazy(() => import('./Components/Pages/Resume/Resume'));
 const People = lazy(() => import('./Components/Pages/People/People'));
 const Places = lazy(() => import('./Components/Pages/Places/Places'));
@@ -82,8 +80,6 @@ function AnimatedRoutes() {
         <Route path='/live' element={<Page><Live /></Page>} />
         <Route path='/apparel' element={<Page><Apparel /></Page>} />
         <Route path='/bw' element={<Page><BlackWhite /></Page>} />
-        <Route path='/everettstudios' element={<Page><EverettStudios /></Page>} />
-        <Route path='/posters' element={<Page><Posters /></Page>} />
         <Route path='/resume' element={<Page><Resume /></Page>} />
         <Route path='/people' element={<Page><People /></Page>} />
         <Route path='/places' element={<Page><Places /></Page>} />
