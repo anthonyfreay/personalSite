@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../Util/PageHeader/PageHeader';
 import Navbar from '../../Util/Navbar/Navbar'
 import PeopleStyle from "./People.module.css"
@@ -29,6 +30,20 @@ const People = () => {
 
     return (
         <div className={PeopleStyle.container}>
+            <Helmet>
+                <title>People | Anthony Freay</title>
+                <meta name="description" content="Portraits by Anthony Freay. Capturing candid and lifestyle moments." />
+                <link rel="canonical" href="https://anthonyfreay.com/people" />
+
+                <meta property="og:title" content="People | Anthony Freay" />
+                <meta property="og:description" content="Portraits by Anthony Freay. Capturing candid and lifestyle moments." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/people_cover.jpg" />
+                <meta property="og:url" content="https://anthonyfreay.com/people" />
+
+                <meta name="twitter:title" content="People | Anthony Freay" />
+                <meta name="twitter:description" content="Portraits by Anthony Freay. Capturing candid and lifestyle moments." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/people_cover.jpg" />
+            </Helmet>
             <PageHeader title="People | Anthony Freay" />
             <Navbar className={PeopleStyle.navBar} />
             <div className={PeopleStyle.mainContent}>

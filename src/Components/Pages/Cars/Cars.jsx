@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../Util/PageHeader/PageHeader';
 import Navbar from '../../Util/Navbar/Navbar'
 import CarsStyle from "./Cars.module.css"
@@ -54,6 +55,20 @@ const Cars = () => {
 
     return (
         <div className={CarsStyle.container}>
+            <Helmet>
+                <title>Cars | Anthony Freay</title>
+                <meta name="description" content="Automotive photography by Anthony Freay. Classic cars, modern designs, and everything in between." />
+                <link rel="canonical" href="https://anthonyfreay.com/cars" />
+
+                <meta property="og:title" content="Cars | Anthony Freay" />
+                <meta property="og:description" content="Automotive photography by Anthony Freay. Classic cars, modern designs, and everything in between." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/cars_cover.jpg" />
+                <meta property="og:url" content="https://anthonyfreay.com/cars" />
+
+                <meta name="twitter:title" content="Cars | Anthony Freay" />
+                <meta name="twitter:description" content="Automotive photography by Anthony Freay. Classic cars, modern designs, and everything in between." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/cars_cover.jpg" />
+            </Helmet>
             <PageHeader title="Cars | Anthony Freay" />
             <Navbar className={CarsStyle.navBar} />
             <div className={CarsStyle.mainContent}>

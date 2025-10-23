@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../Util/PageHeader/PageHeader';
 import Navbar from '../../Util/Navbar/Navbar'
 import BlackWhiteStyle from "./BlackWhite.module.css"
@@ -42,6 +43,20 @@ const BlackWhite = () => {
 
     return (
         <div className={BlackWhiteStyle.container}>
+            <Helmet>
+                <title>Black & White | Anthony Freay</title>
+                <meta name="description" content="A collection of black and white photography by Anthony Freay. Rich, timeless, and classic shots." />
+                <link rel="canonical" href="https://anthonyfreay.com/bw" />
+
+                <meta property="og:title" content="Black & White | Anthony Freay" />
+                <meta property="og:description" content="A collection of black and white photography by Anthony Freay. Rich, timeless, and classic shots." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/bw_cover.jpg" />
+                <meta property="og:url" content="https://anthonyfreay.com/bw" />
+
+                <meta name="twitter:title" content="Black & White | Anthony Freay" />
+                <meta name="twitter:description" content="A collection of black and white photography by Anthony Freay. Rich, timeless, and classic shots." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/bw_cover.jpg" />
+            </Helmet>
             <PageHeader title="Black & White | Anthony Freay" />
             <Navbar className={BlackWhiteStyle.navBar} />
             <div className={BlackWhiteStyle.mainContent}>

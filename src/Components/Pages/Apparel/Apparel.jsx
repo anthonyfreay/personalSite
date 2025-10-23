@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../Util/PageHeader/PageHeader';
 import Navbar from '../../Util/Navbar/Navbar'
 import ApparelStyle from "./Apparel.module.css"
@@ -21,6 +22,20 @@ const Apparel = () => {
 
     return (
         <div className={ApparelStyle.container}>
+            <Helmet>
+                <title>Apparel | Anthony Freay</title>
+                <meta name="description" content="A collection of apparel designs by Anthony Freay, inspired by music and culture." />
+                <link rel="canonical" href="https://anthonyfreay.com/apparel" />
+
+                <meta property="og:title" content="Apparel | Anthony Freay" />
+                <meta property="og:description" content="A collection of apparel designs by Anthony Freay, inspired by music and culture." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/apparel_cover.jpg" />
+                <meta property="og:url" content="https://anthonyfreay.com/apparel" />
+
+                <meta name="twitter:title" content="Apparel | Anthony Freay" />
+                <meta name="twitter:description" content="A collection of apparel designs by Anthony Freay, inspired by music and culture." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/apparel_cover.jpg" />
+            </Helmet>
             <PageHeader title="Apparel | Anthony Freay" />
             <Navbar className={ApparelStyle.navBar} />
             <div className={ApparelStyle.mainContent}>
