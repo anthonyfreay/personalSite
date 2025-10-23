@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PageHeader from '../../Util/PageHeader/PageHeader';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '../../Util/Navbar/Navbar'
@@ -57,6 +57,19 @@ const Live = () => {
     return (
         <div className={LiveStyle.container}>
             <Helmet>
+                <title>Live Music | Anthony Freay</title>
+                <meta name="description" content="Concert and live music photography by Anthony Freay. Featuring artists like Tyler, the Creator, Daniel Caesar, and more." />
+                <link rel="canonical" href="https://anthonyfreay.com/live" />
+
+                <meta property="og:title" content="Live Music | Anthony Freay" />
+                <meta property="og:description" content="Concert and live music photography by Anthony Freay. Featuring artists like Tyler, the Creator, Daniel Caesar, and more." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/live_cover.jpg" />
+                <meta property="og:url" content="https://anthonyfreay.com/live" />
+
+                <meta name="twitter:title" content="Live Music | Anthony Freay" />
+                <meta name="twitter:description" content="Concert and live music photography by Anthony Freay. Featuring artists like Tyler, the Creator, Daniel Caesar, and more." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/live_cover.jpg" />
+
                 {imageData.map((image, index) => (
                     <link key={index} rel="preload" as="image" href={image.src} />
                 ))}

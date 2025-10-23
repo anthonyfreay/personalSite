@@ -6,6 +6,7 @@ import './App.css';
 import Loading from './Components/Util/Loading/Loading';
 import ErrorBoundary from './Components/Util/ErrorBoundary/ErrorBoundary';
 import Analytics from './Components/Util/Analytics';
+import DefaultSEO from './Components/Util/SEO/DefaultSEO';
 
 /// Lazy-loaded components
 const Home = lazy(() => import('./Components/Pages/Home/Home'));
@@ -100,6 +101,7 @@ function App() {
             <RedirectHandler />
             <Analytics />
             <ErrorBoundary>
+              <DefaultSEO />
               <AnimatedRoutes />
             </ErrorBoundary>
           </Suspense>

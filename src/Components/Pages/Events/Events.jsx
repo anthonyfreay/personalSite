@@ -93,6 +93,22 @@ const Events = () => {
                 {allImages.map((image, index) => (
                     <link key={index} rel="preload" as="image" href={image.src} />
                 ))}
+                <title>Events | Anthony Freay</title>
+                <meta name="description" content="Photography from NYC events by Anthony Freay — candid moments, celebrations, and live gatherings." />
+                <link rel="canonical" href="https://anthonyfreay.com/events" />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://anthonyfreay.com/events" />
+                <meta property="og:title" content="Events | Anthony Freay" />
+                <meta property="og:description" content="Photography from NYC events by Anthony Freay — candid moments, celebrations, and live gatherings." />
+                <meta property="og:image" content="https://anthonyfreay.com/covers/events_cover.jpg" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content="Events photography by Anthony Freay" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Events | Anthony Freay" />
+                <meta name="twitter:description" content="Photography from NYC events by Anthony Freay — candid moments, celebrations, and live gatherings." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/covers/events_cover.jpg" />
             </Helmet>
             <PageHeader title="Events | Anthony Freay" />
             <Navbar className={EventsStyle.navBar} />

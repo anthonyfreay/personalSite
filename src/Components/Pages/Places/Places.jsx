@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import PageHeader from '../../Util/PageHeader/PageHeader';
 import Navbar from '../../Util/Navbar/Navbar'
 import PlacesStyle from "./Places.module.css"
@@ -87,6 +88,20 @@ const Places = () => {
 
     return (
         <div className={PlacesStyle.container}>
+            <Helmet>
+                <title>Places | Anthony Freay</title>
+                <meta name="description" content="Travel and street photography by Anthony Freay. Exploring cities, landscapes, and the moments in between." />
+                <link rel="canonical" href="https://anthonyfreay.com/places" />
+
+                <meta property="og:title" content="Places | Anthony Freay" />
+                <meta property="og:description" content="Travel and street photography by Anthony Freay. Exploring cities, landscapes, and the moments in between." />
+                <meta property="og:image" content="https://anthonyfreay.com/places/A7406615-scapes.webp" />
+                <meta property="og:url" content="https://anthonyfreay.com/places" />
+
+                <meta name="twitter:title" content="Places | Anthony Freay" />
+                <meta name="twitter:description" content="Travel and street photography by Anthony Freay. Exploring cities, landscapes, and the moments in between." />
+                <meta name="twitter:image" content="https://anthonyfreay.com/places/A7406615-scapes.webp" />
+            </Helmet>
             <PageHeader title="Places | Anthony Freay" />
             <Navbar className={PlacesStyle.navBar} />
             <div className={PlacesStyle.mainContent}>
