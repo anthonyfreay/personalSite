@@ -8,6 +8,8 @@ import Footer from '../../Util/Footer/Footer'
 
 
 const Cars = () => {
+    // TODO: Separate into horizontalImages and verticalImages arrays for better organization
+    // Use the new MasonryImageGallery API: <MasonryImageGallery horizontalImages={horizontal} verticalImages={vertical} />
     const imageData = [
         { alt: "", src: "cars/A7406517-Enhanced-NR-color.webp" },
 

@@ -13,6 +13,8 @@ body {
 .gallery {
     display: flex;
     width: 100vw;
+    max-width: 1800px;
+    margin: 0 auto;
 }
 
 .galleryItem {

@@ -8,6 +8,8 @@ import Footer from '../../Util/Footer/Footer'
 
 
 const Places = () => {
+    // TODO: Separate into horizontalImages and verticalImages arrays for better organization
+    // Use the new MasonryImageGallery API: <MasonryImageGallery horizontalImages={horizontal} verticalImages={vertical} />
     const imageData = [
 
         { alt: "", src: "places/A7407286-scapes.webp" },
