@@ -25,7 +25,27 @@ body {
 img {
     margin: 10px 0px;
     max-width: 100%;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Staggered animation delays for graceful cascade */
+.galleryItem:nth-child(1) img { animation-delay: 0.05s; }
+.galleryItem:nth-child(2) img { animation-delay: 0.1s; }
+.galleryItem:nth-child(3) img { animation-delay: 0.15s; }
+.galleryItem:nth-child(4) img { animation-delay: 0.2s; }
+.galleryItem:nth-child(5) img { animation-delay: 0.25s; }
+.galleryItem:nth-child(6) img { animation-delay: 0.3s; }
+.galleryItem:nth-child(n+7) img { animation-delay: 0.35s; }
 
 .lightbox {
     --yarl__color_backdrop: var(--overlayColor);

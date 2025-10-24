@@ -68,6 +68,21 @@ a {
     margin: 10px 5px;
 }
 
+/* Fade in the cover images without any movement */
+@keyframes fadeInOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.coverImage img {
+    opacity: 0;
+    animation: fadeInOpacity 0.6s ease-in forwards;
+}
+
 /* Accessibility */
 .coverImage img:focus {
     outline: 2px solid var(--mainColorDark);
@@ -108,27 +123,70 @@ a {
 @media only screen and (max-width: 668.99999px) {
     .mainContent {
         max-width: 100%;
-        justify-content: space-around;
-        padding-right: 15px;
+        padding: 0 15px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 200px));
+        justify-content: center;
+        gap: 12px;
     }
 
     .coverImage {
-        figcaption {
-            font-size: 1rem;
-        }
+        margin: 0;
+    }
+
+    .coverImage figcaption {
+        font-size: 1rem;
+    }
+
+    .coverImage figure {
+        margin: 0;
+    }
+
+    .coverImage img {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        max-height: 200px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        margin: 0;
     }
 }
 
 @media only screen and (max-width: 470.99999px) {
     .coverImage {
         img {
-            width: 220px;
-            height: 220px;
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            max-height: 200px;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
         }
 
         figcaption {
             font-size: 1rem;
         }
+    }
+}
+
+/* Tighter layout for very small phones like 412px width */
+@media only screen and (max-width: 412.99999px) {
+    .mainContent {
+        padding: 0 8px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .coverImage img {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        max-height: 200px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        margin: 0;
     }
 }

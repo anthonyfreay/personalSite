@@ -90,7 +90,7 @@ const Events = () => {
     return (
         <div className={EventsStyle.container}>
             <Helmet>
-                {allImages.map((image, index) => (
+                {allImages.slice(0, 6).map((image, index) => (
                     <link key={index} rel="preload" as="image" href={image.src} />
                 ))}
                 <title>Events | Anthony Freay</title>
