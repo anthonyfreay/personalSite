@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import HomeNavbar from '../../Util/Navbar/HomeNavbar'
 import HomeStyle from './Home.module.css';
@@ -6,6 +6,16 @@ import Icons from '../../Util/Icons/Icons';
 
 
 const Home = () => {
+    useEffect(() => {
+        // Add dark background class to body when Home page mounts
+        document.body.classList.add('home-page');
+        
+        // Remove it when component unmounts (navigating away)
+        return () => {
+            document.body.classList.remove('home-page');
+        };
+    }, []);
+
     return (
         <div className={HomeStyle.main}>
             <div className={HomeStyle.overlay}>

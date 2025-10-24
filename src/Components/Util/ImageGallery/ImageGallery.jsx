@@ -30,7 +30,7 @@ const ImageGallery = memo(({ images }) => {
                 {images.map((image, index) => {
                     return (
                         <div key={image.src} className={ImageGalleryStyle.galleryItem} onClick={() => openLightbox(index)}>
-                            {index < 4 ? (
+                            {index < 6 ? (
                                 <img src={image.src} alt={image.alt} />
                             ) : (
                                 <LazyLoadImage

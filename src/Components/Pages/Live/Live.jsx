@@ -70,7 +70,7 @@ const Live = () => {
                 <meta name="twitter:description" content="Concert and live music photography by Anthony Freay. Featuring artists like Tyler, the Creator, Daniel Caesar, and more." />
                 <meta name="twitter:image" content="https://anthonyfreay.com/covers/live_cover.jpg" />
 
-                {imageData.map((image, index) => (
+                {imageData.slice(0, 6).map((image, index) => (
                     <link key={index} rel="preload" as="image" href={image.src} />
                 ))}
             </Helmet>

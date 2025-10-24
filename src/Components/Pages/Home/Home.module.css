@@ -1,8 +1,12 @@
 @import '../../../App.css';
 
+/* Apply dark background to body only when on Home page */
+:global(body.home-page) {
+    background-color: var(--mainColorDark);
+}
+
 html,
 body {
-    background-color: var(--mainColorLight);
     font-family: var(--fontFamily);
     overflow: hidden;
 }
