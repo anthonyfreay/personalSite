@@ -12,7 +12,7 @@ body {
 }
 
 .main {
-    height: 100%;
+    height: 100vh;
     background-image: url('./img/compressed-wallpaper-200108-04016.jpg');
     background-position: center center;
     background-repeat: no-repeat;
@@ -57,6 +57,10 @@ body {
 .overlay {
     background: var(--overlayColor);
     animation: fadeInDown 1s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .content {
@@ -64,7 +68,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    flex: 1;
     animation: fadeInUp 1s ease-out forwards;
 }
 
@@ -166,10 +170,6 @@ body {
 
     .main {
         background-image: url('./img/small-wallpaper-200108-04016.jpg');
-    }
-
-    .content {
-        padding-bottom: 150px;
     }
 
     .brandLogo a {

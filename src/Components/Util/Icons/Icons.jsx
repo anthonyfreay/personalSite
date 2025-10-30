@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegEnvelope, FaInstagram, FaPinterest } from 'react-icons/fa';
+import { FaRegEnvelope, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import IconsStyle from './Icons.module.css';
 
 function Icons({ iconSize = 35 }) {
@@ -21,12 +21,12 @@ function Icons({ iconSize = 35 }) {
                     rel="noopener noreferrer">
                     <FaInstagram size={iconSize} />
                 </a>
-                <a href="https://www.pinterest.com/anthonybfreay"
-                    aria-label="View Pinterest Board"
+                <a href="https://www.linkedin.com/in/anthonyfreay"
+                    aria-label="Visit LinkedIn Profile"
                     className={IconsStyle.icon}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaPinterest size={iconSize} />
+                    <FaLinkedin size={iconSize} />
                 </a>
             </div>
         </div>

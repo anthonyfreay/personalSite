@@ -1,6 +1,9 @@
 import React from 'react';
 import { Navbar, Nav } from "react-bootstrap";
 import ReactGA from 'react-ga4';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import NavStyle from "./Navbar.module.css"
 
 function HomeNavbar() {
@@ -17,28 +20,21 @@ function HomeNavbar() {
         <Navbar expand={true} className={NavStyle.homeNavbar}>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className={NavStyle.homeNavbarToggle} />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
+                <Nav className="ms-auto pe-2">
                     <a
                         href="/resume-anthony_freay-f2024.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={NavStyle.homeNavItem}
                         onClick={trackResumeClick}>
-                        Resume
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/anthonyfreay"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={NavStyle.homeNavItem}>
-                        LinkedIn
+                        <FontAwesomeIcon icon={faFilePdf} />
                     </a>
                     <a
                         href="https://github.com/anthonyfreay"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={NavStyle.homeNavItem}>
-                        GitHub
+                        <FontAwesomeIcon icon={faGithub} />
                     </a>
                 </Nav>
             </Navbar.Collapse>
