@@ -58,16 +58,64 @@ ${urlsXml}
 `;
 }
 
+function copyIndexForSPA() {
+  const distDir = path.resolve(__dirname, '../dist');
+  const indexPath = path.join(distDir, 'index.html');
+
+  // Only run this if dist/index.html exists (i.e., after build)
+  if (!fs.existsSync(indexPath)) {
+    console.log('⏭️  Skipping SPA route copy (dist/index.html not found - run after build)');
+    return;
+  }
+
+  const indexContent = fs.readFileSync(indexPath, 'utf8');
+
+  // Create a directory for each route (except '/') and copy index.html into it
+  routes
+    .filter(route => route.path !== '/')
+    .forEach(route => {
+      const routePath = route.path.slice(1); // Remove leading slash
+      const routeDir = path.join(distDir, routePath);
+
+      // Create directory if it doesn't exist
+      if (!fs.existsSync(routeDir)) {
+        fs.mkdirSync(routeDir, { recursive: true });
+      }
+
+      // Copy index.html to route/index.html
+      const targetPath = path.join(routeDir, 'index.html');
+      fs.writeFileSync(targetPath, indexContent);
+      console.log(`  ✓ Created ${routePath}/index.html`);
+    });
+
+  console.log('\n✅ SPA route files created successfully!');
+  console.log('   Crawlers can now access all routes directly on GitHub Pages.\n');
+}
+
 function main() {
+  // Generate sitemap XML
+  const xml = buildSitemapXml(routes);
+  console.log(`Base URL: ${SITE_URL}`);
+
+  // Write to public directory (for development reference)
   const publicDir = path.resolve(__dirname, '../public');
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
   }
-  const xml = buildSitemapXml(routes);
-  const outPath = path.join(publicDir, 'sitemap.xml');
-  fs.writeFileSync(outPath, xml, 'utf8');
-  console.log(`Sitemap written to: ${outPath}`);
-  console.log(`Base URL: ${SITE_URL}`);
+  const publicPath = path.join(publicDir, 'sitemap.xml');
+  fs.writeFileSync(publicPath, xml, 'utf8');
+  console.log(`Sitemap written to: ${publicPath}`);
+
+  // Write to dist directory (for deployment)
+  const distDir = path.resolve(__dirname, '../dist');
+  if (fs.existsSync(distDir)) {
+    const distPath = path.join(distDir, 'sitemap.xml');
+    fs.writeFileSync(distPath, xml, 'utf8');
+    console.log(`Sitemap written to: ${distPath}`);
+  }
+
+  // Copy index.html to route directories for GitHub Pages SPA support
+  copyIndexForSPA();
 }
 
 main();
