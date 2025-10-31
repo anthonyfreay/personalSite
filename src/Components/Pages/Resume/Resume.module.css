@@ -1,0 +1,272 @@
+@import '../../../App.css';
+
+.resume-container {
+    background-color: var(--mainColorLight);
+    display: flex;
+    flex-direction: column;
+}
+
+.resume-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem 2rem;
+    flex: 1;
+}
+
+.resume-viewer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 3rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 850px;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.resume-header h1 {
+    margin: 0;
+    font-size: 2.25rem;
+    color: var(--textColor);
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.download-button {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    border: none;
+    background-color: var(--accentColor1);
+    color: white;
+    box-shadow: 0 4px 12px rgba(84, 198, 235, 0.3);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.download-button:hover {
+    background-color: var(--accentColor2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+}
+
+.download-button:active {
+    transform: translateY(0);
+}
+
+.open-button {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    border: 1.5px solid var(--textColor);
+    background-color: transparent;
+    color: var(--textColor);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.open-button:hover {
+    background-color: var(--accentColor3);
+    color: white;
+    border-color: var(--accentColor3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(232, 116, 97, 0.3);
+}
+
+.open-button:active {
+    transform: translateY(0);
+}
+
+.page-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdf-page {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    position: relative;
+}
+
+.pdf-page canvas {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
+}
+
+.page-indicator {
+    margin-top: 1rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.pdf-loading {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--textColor);
+}
+
+.pdf-loading p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 4px solid var(--mainColorLight);
+    border-top-color: var(--accentColor1);
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1.25rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pdf-error {
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--accentColor3);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.pdf-error p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.pdf-error ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    color: var(--textColor);
+}
+
+.pdf-error li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.pdf-error a {
+    color: var(--accentColor1);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.pdf-error a:hover {
+    color: var(--accentColor2);
+}
+
+.download-button:focus-visible,
+.open-button:focus-visible,
+.pdf-error a:focus-visible {
+    outline: 3px solid rgba(84, 198, 235, 0.5);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .resume-content {
+        padding: 2rem 1rem;
+    }
+
+    .resume-viewer {
+        padding: 1.5rem 1rem;
+    }
+
+    .resume-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .resume-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .header-actions {
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .download-button,
+    .open-button {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+        min-height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .resume-viewer {
+        padding: 1rem 0.5rem;
+    }
+}
+
+@media print {
+    .resume-header {
+        display: none;
+    }
+
+    .resume-container {
+        background: white;
+    }
+
+    .resume-viewer {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .pdf-page {
+        box-shadow: none;
+        page-break-after: always;
+    }
+
+    .page-indicator {
+        display: none;
+    }
+}
+
+.pdf-page {
+    overflow: hidden;
+}

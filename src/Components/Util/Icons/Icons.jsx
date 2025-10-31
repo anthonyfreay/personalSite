@@ -33,12 +33,11 @@ function Icons({ iconSize = 35 }) {
                     <FaLinkedin size={iconSize} />
                 </a>
                 <a
-                    href="/resume-anthony_freay-f2024.pdf"
+                    href="/resume"
                     aria-label="View Résumé"
                     title="Résumé"
                     className={IconsStyle.icon}
-                    target="_blank"
-                    rel="noopener noreferrer">
+                >
                     <FaRegFileAlt size={iconSize} />
                 </a>
                 <a href="https://github.com/anthonyfreay"
