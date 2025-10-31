@@ -14,4 +14,12 @@
 .icon {
     margin: 0 15px;
     color: var(--mainColorLight);
+    background-color: var(--mainColorDark);
+}
+
+.divider {
+    color: var(--mainColorLight);
+    margin: 0 10px;
+    font-size: 1.5rem;
+    opacity: 0.5;
 }

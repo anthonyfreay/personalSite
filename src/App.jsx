@@ -79,7 +79,7 @@ function AnimatedRoutes() {
         <Route path='/contact' element={<Page><Contact /></Page>} />
         <Route path='/work' element={<Page><Work /></Page>} />
         <Route path='/live' element={<Page><Live /></Page>} />
-        <Route path='/apparel' element={<Page><Apparel /></Page>} />
+        {/* <Route path='/apparel' element={<Page><Apparel /></Page>} /> */}
         <Route path='/bw' element={<Page><BlackWhite /></Page>} />
         <Route path='/resume' element={<Page><Resume /></Page>} />
         <Route path='/people' element={<Page><People /></Page>} />
