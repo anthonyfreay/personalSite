@@ -25,7 +25,7 @@
   "scripts": {
     "dev": "vite --host",
     "start": "vite",
-    "build": "npm run generate-sitemap && vite build",
+    "build": "vite build && npm run generate-sitemap",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
