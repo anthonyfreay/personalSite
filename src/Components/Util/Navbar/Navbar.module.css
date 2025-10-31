@@ -53,6 +53,11 @@
     font-weight: 500;
 }
 
+.homeNavItem svg {
+    width: 20px;
+    height: 20px;
+}
+
 .homeNavItem:hover {
     color: var(--accentColor1);
 }
@@ -78,6 +83,11 @@ a.homeNavItem {
 @media only screen and (max-width: 668.99999px) {
     .homeNavItem {
         font-size: 0.8rem;
+    }
+
+    .homeNavItem svg {
+        width: 25px;
+        height: 25px;
     }
 }
 
