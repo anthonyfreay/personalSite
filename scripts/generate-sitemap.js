@@ -19,7 +19,6 @@ const routes = [
   { path: '/contact', changefreq: 'monthly', priority: 0.8 },
   { path: '/work', changefreq: 'weekly', priority: 0.9 },
   { path: '/live', changefreq: 'weekly', priority: 0.7 },
-  { path: '/apparel', changefreq: 'weekly', priority: 0.7 },
   { path: '/bw', changefreq: 'weekly', priority: 0.7 },
   { path: '/resume', changefreq: 'monthly', priority: 0.8 },
   { path: '/people', changefreq: 'weekly', priority: 0.7 },
