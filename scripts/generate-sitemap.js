@@ -12,20 +12,8 @@ function getSiteUrl() {
 }
 
 const SITE_URL = getSiteUrl();
-
-// Define your public routes (mirror react-router routes in src/App.jsx)
-const routes = [
-  { path: '/', changefreq: 'daily', priority: 1.0 },
-  { path: '/contact', changefreq: 'monthly', priority: 0.8 },
-  { path: '/work', changefreq: 'weekly', priority: 0.9 },
-  { path: '/live', changefreq: 'weekly', priority: 0.7 },
-  { path: '/bw', changefreq: 'weekly', priority: 0.7 },
-  { path: '/resume', changefreq: 'monthly', priority: 0.8 },
-  { path: '/people', changefreq: 'weekly', priority: 0.7 },
-  { path: '/places', changefreq: 'weekly', priority: 0.7 },
-  { path: '/cars', changefreq: 'weekly', priority: 0.7 },
-  { path: '/events', changefreq: 'weekly', priority: 0.7 },
-];
+// Load public routes from routes.json (single source of truth)
+const routes = require(path.resolve(__dirname, '../routes.json'));
 
 function xmlEscape(str) {
   return String(str)
@@ -37,9 +25,16 @@ function xmlEscape(str) {
 }
 
 function buildSitemapXml(urlset) {
+  // Ensure non-root paths end with a trailing slash to match GitHub Pages canonical URLs
+  function withCanonicalSlash(p) {
+    if (!p || p === '/') return '/';
+    return p.endsWith('/') ? p : `${p}/`;
+  }
+
   const urlsXml = urlset
     .map((u) => {
-      const loc = `${SITE_URL}${u.path}`.replace(/\/+$/, '') || SITE_URL;
+      const canonicalPath = withCanonicalSlash(u.path);
+      const loc = canonicalPath === '/' ? SITE_URL : `${SITE_URL}${canonicalPath}`;
       return `
   <url>
     <loc>${xmlEscape(loc || SITE_URL)}</loc>

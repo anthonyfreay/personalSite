@@ -22,16 +22,7 @@
     gtag('config', 'G-5RYLFVDX71');
   </script>
 
-  <script>
-    // Handle SPA routing for direct URL access (e.g., from 404.html redirect)
-    (function () {
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect !== location.pathname) {
-        history.replaceState(null, null, redirect);
-      }
-    })();
-  </script>
+  <!-- Pre-rendered static HTML - no redirect handling needed -->
 
 </head>
 

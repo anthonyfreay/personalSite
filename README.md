@@ -45,14 +45,17 @@ npm run deploy
       - [Prerequisites](#prerequisites-1)
       - [Deploy to GitHub Pages](#deploy-to-github-pages)
       - [Alternative Deployment Options](#alternative-deployment-options)
+  - [SEO \& Indexing ✅](#seo--indexing-)
+  - [Security \& Tooling Updates 🔒](#security--tooling-updates-)
   - [Project Structure 🩻](#project-structure-)
     - [Key Architecture Features](#key-architecture-features)
   - [Available Scripts 📜](#available-scripts-)
-    - [`npm start`](#npm-start)
-    - [`npm test`](#npm-test)
+    - [`npm run dev` or `npm start`](#npm-run-dev-or-npm-start)
     - [`npm run build`](#npm-run-build)
+    - [`npm run preview`](#npm-run-preview)
     - [`npm run deploy`](#npm-run-deploy)
-    - [`npm run eject`](#npm-run-eject)
+    - [`npm run prerender`](#npm-run-prerender)
+    - [`npm run generate-sitemap`](#npm-run-generate-sitemap)
   - [Features ✨](#features-)
   - [Troubleshooting 🔧](#troubleshooting-)
     - [Common Issues](#common-issues)
@@ -106,14 +109,14 @@ Displays profile picture, brief bio, and a professional contact form.
 - **yet-another-react-lightbox** - Modern lightbox component for image viewing
 
 ### Development & Deployment
-- **React Scripts 5.0** - Create React App build tooling
+- **Vite 7** - Fast development server and build tool
 - **gh-pages** - Automated deployment to GitHub Pages
 - **Web Vitals** - Performance monitoring
 
 ### Architecture Patterns
 - **Lazy Loading** - Code splitting for optimal performance
 - **Component-Based Architecture** - Reusable and maintainable components
-- **HashRouter** - Client-side routing compatible with GitHub Pages
+- **BrowserRouter** - Client-side routing (pre-rendering ensures deep links serve 200 on GitHub Pages)
 - **Responsive Design** - Mobile-first approach using Bootstrap grid system
 
 ## Installation 🛠️
@@ -121,7 +124,7 @@ Displays profile picture, brief bio, and a professional contact form.
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
-- **Node.js** (v14 or higher recommended)
+- **Node.js** 18.20+ or 20.10+
 - **npm** (comes with Node.js)
 - **Git** (for cloning the repository)
 
@@ -154,12 +157,11 @@ npm run build
 ```
 
 This command:
-- Creates a `build/` directory with optimized production files
+- Creates a `dist/` directory with optimized production files
 - Minifies JavaScript and CSS for faster loading
-- Optimizes images and assets
 - Generates static files ready for deployment
 
-The build folder will contain all the files needed to deploy your website to any static hosting service. 
+The `dist/` folder contains everything needed to deploy to any static hosting service. 
 
 ## Deployment 🚚
 
@@ -174,8 +176,7 @@ npm start
 This command:
 - Starts the development server on [http://localhost:3000](http://localhost:3000)
 - Enables hot reloading (changes appear automatically)
-- Shows lint errors and warnings in the console
-- Opens the app in your default browser
+- Shows build errors and warnings in the console
 
 Press `Ctrl+C` in the terminal to stop the development server.
 
@@ -197,20 +198,44 @@ npm run deploy
 
 This command:
 1. Runs `npm run build` to create an optimized production build
-2. Pushes the contents of the `build/` directory to the `gh-pages` branch
+2. Pushes the contents of the `dist/` directory to the `gh-pages` branch
 3. Makes your site available at the URL specified in the `homepage` field
 
 **Note:** The first deployment may take a few minutes to become available.
 
 #### Alternative Deployment Options
 
-The production build in the `build/` folder can be deployed to any static hosting service:
+The production build in the `dist/` folder can be deployed to any static hosting service:
 
-- **Netlify**: Drag and drop the `build/` folder or connect your Git repository
+- **Netlify**: Drag and drop the `dist/` folder or connect your Git repository
 - **Vercel**: Import your repository and deploy with zero configuration
-- **AWS S3**: Upload the `build/` folder to an S3 bucket configured for static hosting
+- **AWS S3**: Upload the `dist/` folder to an S3 bucket configured for static hosting
 - **Firebase Hosting**: Use `firebase deploy` after configuring Firebase
-- **Custom Server**: Copy the `build/` folder contents to your web server's public directory
+- **Custom Server**: Copy the `dist/` folder contents to your web server's public directory
+
+## SEO & Indexing ✅
+
+To ensure all deep routes (`/bw`, `/contact`, `/events`, etc.) are indexable on GitHub Pages, the build pipeline includes a simple pre-render step and sitemap generation.
+
+- **Pre-render**: After `vite build`, a script copies `dist/index.html` to each route directory so requests like `/bw` serve `200 OK`.
+- **Sitemap**: A script generates `sitemap.xml` from the routes list and updates `robots.txt` to reference it.
+
+Build pipeline:
+
+```bash
+vite build && node scripts/prerender.js && node scripts/generate-sitemap.js
+```
+
+When adding new routes:
+- Add the route in `src/App.jsx`.
+- Add the route to arrays in `scripts/prerender.js` and `scripts/generate-sitemap.js`.
+- Rebuild and deploy.
+
+## Security & Tooling Updates 🔒
+
+- Migrated from Create React App to **Vite** to remove legacy vulnerabilities and improve DX/performance.
+- Updated to **Vite 7** (with patched `esbuild`) to address remaining moderate advisories.
+- Requires **Node.js 18.20+ (or 20.10+)** for Vite 7.
 
 ## Project Structure 🩻
 
@@ -230,10 +255,8 @@ personalSite/
 │   ├── people/                      # Portrait photography
 │   ├── places/                      # Landscape/location photography
 │   ├── posters/                     # Poster designs
-│   ├── 404.html                     # Custom 404 error page
 │   ├── anthony_freay_resume.pdf     # Resume PDF
 │   ├── favicon.ico                  # Site favicon
-│   ├── index.html                   # HTML template
 │   └── robots.txt                   # Search engine crawler instructions
 │
 ├── src/                             # React source code
@@ -266,20 +289,21 @@ personalSite/
 │   ├── App.css                      # Global app styles
 │   ├── App.jsx                      # Main app component with routing
 │   ├── index.css                    # Root styles
-│   ├── index.js                     # React app entry point
-│   ├── reportWebVitals.js          # Performance monitoring
-│   └── setupTests.js               # Test configuration
+│   ├── index.jsx                    # React app entry point
+│   ├── reportWebVitals.js           # Performance monitoring
+│   └── setupTests.js                # Test configuration
 │
 ├── .gitignore                       # Git ignore rules
+├── index.html                       # HTML template (Vite root)
 ├── package.json                     # Project dependencies and scripts
-├── package-lock.json               # Locked dependency versions
+├── package-lock.json                # Locked dependency versions
 └── README.md                        # This file
 ```
 
 ### Key Architecture Features
 
 - **Lazy Loading**: Components are lazy-loaded using `React.lazy()` for improved performance
-- **React Router**: Uses `HashRouter` for client-side routing
+- **React Router**: Uses `BrowserRouter` for client-side routing
 - **Component-Based**: Modular design with reusable utility components
 - **Responsive Design**: Built with Bootstrap and React Bootstrap for mobile-first responsiveness
 - **SEO Optimized**: Uses `react-helmet-async` for dynamic meta tags
@@ -289,35 +313,24 @@ personalSite/
 
 In the project directory, you can run the following npm scripts:
 
-### `npm start`
-Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
+### `npm run dev` or `npm start`
+Runs the Vite dev server at [http://localhost:3000](http://localhost:3000).
 - Hot reloading enabled
-- Lint errors shown in console
-- Automatically opens in browser
-
-### `npm test`
-Launches the test runner in interactive watch mode.
-- Runs all test files
-- Re-runs tests on file changes
-- Shows test coverage
 
 ### `npm run build`
-Creates an optimized production build in the `build/` folder.
-- Minifies code for best performance
-- Optimizes assets and images
-- Generates static files ready for deployment
-- Includes source maps for debugging
+Builds the app to the `dist/` folder.
+
+### `npm run preview`
+Preview the production build locally.
 
 ### `npm run deploy`
-Builds and deploys the app to GitHub Pages.
-- Automatically runs `npm run build`
-- Pushes to `gh-pages` branch
-- Updates live site at configured homepage URL
+Builds and deploys the app to GitHub Pages (publishes `dist/` to `gh-pages`).
 
-### `npm run eject`
-⚠️ **Warning: This is a one-way operation!**
+### `npm run prerender`
+Copies `dist/index.html` into route directories for deep-link 200s on GitHub Pages.
 
-Ejects from Create React App, giving you full control over webpack, Babel, ESLint, etc. Only use if you need custom configuration that CRA doesn't support.
+### `npm run generate-sitemap`
+Generates `sitemap.xml` based on the routes list.
 
 ## Features ✨
 
@@ -357,11 +370,8 @@ npm install
 
 **Build fails**
 ```bash
-# Check Node.js version (should be v14+)
+# Check Node.js version (should be 18.20+ or 20.10+)
 node --version
-
-# Update React Scripts if needed
-npm install react-scripts@latest
 ```
 
 **Images not loading**
@@ -405,7 +415,6 @@ This project uses the following third-party libraries:
 - **react-lazy-load-image-component**: ^1.6.0
 - **react-masonry-css**: ^1.0.16
 - **react-router-dom**: ^6.20.1
-- **react-scripts**: ^5.0.1
 - **web-vitals**: ^2.1.4
 - **yet-another-react-lightbox**: ^3.15.6
 
