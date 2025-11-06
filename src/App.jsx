@@ -1,5 +1,5 @@
-import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
@@ -13,7 +13,6 @@ const Home = lazy(() => import('./Components/Pages/Home/Home'));
 const Contact = lazy(() => import('./Components/Pages/Contact/Contact'));
 const Work = lazy(() => import('./Components/Pages/Work/Work'));
 const Live = lazy(() => import('./Components/Pages/Live/Live'));
-const Apparel = lazy(() => import('./Components/Pages/Apparel/Apparel'));
 const BlackWhite = lazy(() => import('./Components/Pages/BlackWhite/BlackWhite'));
 const Resume = lazy(() => import('./Components/Pages/Resume/Resume'));
 const People = lazy(() => import('./Components/Pages/People/People'));
@@ -43,19 +42,7 @@ function RemoveTrailingSlash({ ...rest }) {
   return rest.children;
 }
 
-// Handle GitHub Pages deep links: redirect from stored path set in public/404.html
-function RedirectHandler() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const redirectPath = sessionStorage.redirect || sessionStorage.getItem('redirect');
-    if (redirectPath) {
-      try { sessionStorage.removeItem('redirect'); } catch (e) { /* noop */ }
-      try { delete sessionStorage.redirect; } catch (e) { /* noop */ }
-      navigate(redirectPath, { replace: true });
-    }
-  }, [navigate]);
-  return null;
-}
+// RedirectHandler removed - no longer needed with pre-rendered static HTML
 
 function Page({ children }) {
   return (
@@ -97,7 +84,6 @@ function App() {
       <Router>
         <RemoveTrailingSlash>
           <Suspense fallback={<Loading />}>
-            <RedirectHandler />
             <Analytics />
             <ErrorBoundary>
               <DefaultSEO />
