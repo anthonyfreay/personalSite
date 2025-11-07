@@ -27,7 +27,6 @@ body {
 }
 
 .contactForm textarea {
-    min-height: 100px;
     resize: vertical;
 }
 

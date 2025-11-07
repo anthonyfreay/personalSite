@@ -28,12 +28,12 @@ const Resume = () => {
 
                 <meta property="og:title" content="Résumé | Anthony Freay" />
                 <meta property="og:description" content="The résumé of Anthony Freay, a software engineer and photographer based in NYC." />
-                <meta property="og:image" content="https://anthonyfreay.com/me/RX706334-Enhanced-NR-color.jpg" />
+                <meta property="og:image" content="https://anthonyfreay.com/me/A7406500.jpg" />
                 <meta property="og:url" content="https://anthonyfreay.com/resume" />
 
                 <meta name="twitter:title" content="Résumé | Anthony Freay" />
                 <meta name="twitter:description" content="The résumé of Anthony Freay, a software engineer and photographer based in NYC." />
-                <meta name="twitter:image" content="https://anthonyfreay.com/me/RX706334-Enhanced-NR-color.jpg" />
+                <meta name="twitter:image" content="https://anthonyfreay.com/me/A7406500.jpg" />
             </Helmet>
             <Navbar />
 
