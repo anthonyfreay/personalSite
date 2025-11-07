@@ -28,7 +28,6 @@ const Contact = () => {
             <div className={ContactStyle.mainContent}>
                 <div className={ContactStyle.bioContainer}>
                     <div className={ContactStyle.leftColumn}>
-                        <h2 className={ContactStyle.formTitle}>Contact</h2>
                         <div className={ContactStyle.bioImage}>
                             <img src="/me/A7406500.jpg" alt="Anthony Freay" className={ContactStyle.profileImage} />
                         </div>
