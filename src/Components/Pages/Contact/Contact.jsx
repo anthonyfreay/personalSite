@@ -35,13 +35,13 @@ const Contact = () => {
                     <div className={ContactStyle.rightColumn}>
                         <div className={ContactStyle.bioDescription}>
                             <p className={ContactStyle.intro}>
-                                <b>Anthony Freay</b> (he/they) is a <b>New York-based</b> multi-faceted creative, specializing in: <br /><b>software engineering, photography, and design.</b>
+                                <b>Anthony Freay</b> (he/him) is a multi-faceted creative, specializing in: <b>software development, photography,</b> and <b>design</b> based in <b>New York, NY</b>.
                             </p>
 
-                            <p className={ContactStyle.ethos}>Anthony's work focuses on collaboration and attention to detail to create authentic and clean imagery.</p>
+                            <p className={ContactStyle.ethos}>Anthony's work focuses on collaboration and attention to detail to create clean, authentic imagery.</p>
 
                             <p className={ContactStyle.location}>
-                                Anthony is currently booking. For professional inquiries, please use the form or reach out directly via email.
+                                Anthony is currently booking for photography sessions. For inquiries, please use the form below or reach out directly via email.
                             </p>
                         </div>
                         <div className={ContactStyle.formContainer}>
