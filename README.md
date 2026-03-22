@@ -1,3 +1,12 @@
+# ⚠️ ARCHIVED PROJECT ⚠️
+
+**This repository has been archived and is no longer being maintained.**
+
+The project has been migrated to a new architecture (Next.js). You can find the updated version at:
+👉 **[github.com/anthonyfreay/personalsite-next](https://github.com/anthonyfreay/personalsite-next)**
+
+---
+
 # personalSite 📸
 
 Personal portfolio website to showcase frontend skillset and photography. This portfolio website is image-focused, featuring a modern React-based architecture with responsive design and optimized performance.
@@ -23,6 +32,7 @@ npm run deploy
 ```
 
 ## Table of Contents 📖 <!-- omit in toc -->
+- [⚠️ ARCHIVED PROJECT ⚠️](#️-archived-project-️)
 - [personalSite 📸](#personalsite-)
   - [Quick Start 🚀](#quick-start-)
   - [Usage 🫡](#usage-)
@@ -69,7 +79,7 @@ npm run deploy
 ## Usage 🫡
 
 ### Live Demo 🖥️
-View the deployed portfolio website at https://anthonyfreay.com.
+The live version of this project (now running on Next.js) can be viewed at [anthonyfreay.com](https://anthonyfreay.com).
 
 ### Navigation 📍
 
@@ -406,6 +416,7 @@ This project uses the following third-party libraries:
 - **@testing-library/react**: ^13.4.0
 - **@testing-library/user-event**: ^13.5.0
 - **bootstrap**: ^5.3.2
+- **framer-motion**: ^12.23.24
 - **react**: ^18.2.0
 - **react-bootstrap**: ^2.9.1
 - **react-dom**: ^18.2.0
@@ -414,14 +425,19 @@ This project uses the following third-party libraries:
 - **react-icons**: ^4.12.0
 - **react-lazy-load-image-component**: ^1.6.0
 - **react-masonry-css**: ^1.0.16
+- **react-pdf**: ^10.2.0
 - **react-router-dom**: ^6.20.1
 - **web-vitals**: ^2.1.4
 - **yet-another-react-lightbox**: ^3.15.6
 
 ### Development Dependencies
 
-- **@babel/plugin-proposal-private-property-in-object**: ^7.21.11
+- **@vitejs/plugin-react**: ^5.0.0
+- **@vitejs/plugin-react-swc**: ^4.2.1
 - **gh-pages**: ^6.1.1
+- **sitemap**: ^8.0.1
+- **vite**: ^7.1.11
+- **vite-ssg**: ^28.2.2
 
 
 ## License 👩🏽‍⚖️
